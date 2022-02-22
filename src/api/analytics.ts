@@ -1,5 +1,5 @@
 import axios from "../config/axios";
-import {Alert} from '../utils/Alert';  
+import { Alert } from "../utils/Alert";
 // import { Transaction } from "../Interface/TransactionState";
 // import { ThunkAction, ThunkDispatch } from "redux-thunk";
 // import { AnyAction } from "redux";
@@ -32,8 +32,8 @@ export const APIGetExpenseByDate = async () => {
 // ): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
 //   return async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
 //     const response = await APICreateTransaction(transaction);
-   
+
 //     dispatch(addTransaction(response[0]));
-   
+
 //   };
 // };

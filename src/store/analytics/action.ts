@@ -1,10 +1,15 @@
 import { TotalData } from "../../interface/AnalyticsState";
-import { UPDATE_EXPENSE_BY_CATEGORY, UPDATE_EXPENSE_BY_DATE, UPDATE_TOTAL } from "./constant";
+import {
+  UPDATE_EXPENSE_BY_CATEGORY,
+  UPDATE_EXPENSE_BY_DATE,
+  UPDATE_TOTAL,
+} from "./constant";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
-import { APIGetExpenseByCategory, APIGetExpenseByDate } from "../../api/analytics";
-
-
+import {
+  APIGetExpenseByCategory,
+  APIGetExpenseByDate,
+} from "../../api/analytics";
 
 export const updateTotal = (totalData: TotalData) => {
   return {
@@ -13,34 +18,42 @@ export const updateTotal = (totalData: TotalData) => {
   };
 };
 
-export const updateExpenseCategory = (expense:any) => {
+export const updateExpenseCategory = (expense: any) => {
   return {
     type: UPDATE_EXPENSE_BY_CATEGORY,
-    payload: expense
-  }
+    payload: expense,
+  };
 };
 
-export const updateExpenseDate = (expense:any) => {
+export const updateExpenseDate = (expense: any) => {
   return {
     type: UPDATE_EXPENSE_BY_DATE,
-    payload: expense
-  }
+    payload: expense,
+  };
 };
 
-
-
-export const getExpenseByCategory = (): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
+export const getExpenseByCategory = (): ThunkAction<
+  Promise<void>,
+  {},
+  {},
+  AnyAction
+> => {
   return async (dispatch: ThunkDispatch<{}, {}, any>) => {
     const [response, error] = await APIGetExpenseByCategory();
-    if(error) return;
+    if (error) return;
     dispatch(updateExpenseCategory(response));
   };
 };
 
-export const getExpenseByDate = (): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
+export const getExpenseByDate = (): ThunkAction<
+  Promise<void>,
+  {},
+  {},
+  AnyAction
+> => {
   return async (dispatch: ThunkDispatch<{}, {}, any>) => {
     const [response, error] = await APIGetExpenseByDate();
-    if(error) return;
+    if (error) return;
     dispatch(updateExpenseDate(response.expense));
   };
 };

@@ -1,23 +1,21 @@
-import axios from 'axios';
-import firebaseInstance from './firebase';
+import axios from "axios";
+import firebaseInstance from "./firebase";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
-let token = '';
+let token = "";
 (async () => {
-//@ts-ignore
   const user = firebaseInstance.auth().currentUser;
-  token = user ? ((await user.getIdToken()) as string) : '';
+  token = user ? ((await user.getIdToken()) as string) : "";
 })();
 
 axios.defaults.headers.common.Authorization =
-  localStorage.getItem('access-token') ?? '';
+  localStorage.getItem("access-token") ?? "";
 //@ts-ignore
-axios.defaults.headers['Accept-Language'] = 'en-us';
+axios.defaults.headers["Accept-Language"] = "en-us";
 
 axios.interceptors.request.use(
   function (config) {
-//@ts-ignore
     const user = firebaseInstance.auth().currentUser;
     const idToken = user?.getIdToken();
     // * Do something before request is sent
@@ -43,7 +41,7 @@ axios.interceptors.response.use(
       // * write unauthorized logic here..
     }
 
-    return Promise.reject(error?.response?.data?.message ?? 'Network Error');
+    return Promise.reject(error?.response?.data?.message ?? "Network Error");
   }
 );
 export default axios;

@@ -2,7 +2,11 @@ import axios from "../config/axios";
 import { Transaction } from "../interface/TransactionState";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
-import { addTransaction, loadTransaction, deleteTransaction } from "../store/transaction/action";
+import {
+  addTransaction,
+  loadTransaction,
+  deleteTransaction,
+} from "../store/transaction/action";
 import { updateTotal } from "../store/analytics/action";
 const BASE_PATH = "/transaction";
 
@@ -21,25 +25,25 @@ export const createTransaction = (
 ): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
   return async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     const response = await APICreateTransaction(transaction);
-   
+
     dispatch(addTransaction(response[0]));
-   
   };
 };
 
-
 // * GET ALL TRANSACTION
-export const APIGetAllTransaction = async (page:number, size:number) => {
+export const APIGetAllTransaction = async (page: number, size: number) => {
   try {
-    
-    const data = await axios.get(`${BASE_PATH}/${page}/${size}`,);
+    const data = await axios.get(`${BASE_PATH}/${page}/${size}`);
     return [data.data, null];
   } catch (error) {
     return [null, error];
   }
-}
+};
 
-export const getAllTransaction = (page:number, size:number): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
+export const getAllTransaction = (
+  page: number,
+  size: number
+): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
   return async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     const [response, error] = await APIGetAllTransaction(page, size);
     if (error) console.log(error);
@@ -47,26 +51,26 @@ export const getAllTransaction = (page:number, size:number): ThunkAction<Promise
   };
 };
 
-
 // * API DELETE SINGLE TRANSACTION
 
-export const APIDeleteSingleTransaction = async (transactionId:string) => {
+export const APIDeleteSingleTransaction = async (transactionId: string) => {
   try {
-    const data = await axios.delete(`${BASE_PATH}/${transactionId}`,);
+    const data = await axios.delete(`${BASE_PATH}/${transactionId}`);
     return [data.data, null];
   } catch (error) {
     return [null, error];
   }
-}
+};
 
-export const deleteSingleTransaction = (transactionId:string): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
+export const deleteSingleTransaction = (
+  transactionId: string
+): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
   return async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     const [response, error] = await APIDeleteSingleTransaction(transactionId);
     if (error) console.log(error);
     dispatch(deleteTransaction(transactionId));
   };
 };
-
 
 // * API TOTAL TRANSACTION STATS
 
@@ -77,9 +81,14 @@ export const APIGetTotalData = async () => {
   } catch (error) {
     return [null, error];
   }
-}
+};
 
-export const getTotalData = (): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
+export const getTotalData = (): ThunkAction<
+  Promise<void>,
+  {},
+  {},
+  AnyAction
+> => {
   return async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     const [response, error] = await APIGetTotalData();
     if (error) console.log(error);

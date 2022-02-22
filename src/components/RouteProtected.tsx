@@ -5,7 +5,7 @@ import axios from "../config/axios";
 import { getProfile } from "../store/user/action";
 
 export const ProtectedRoute: any = ({ component: Component, ...rest }: any) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<Boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   useEffect(() => {
     auth.onAuthStateChanged(async (user: any) => {
       const idToken = await user?.getIdToken();

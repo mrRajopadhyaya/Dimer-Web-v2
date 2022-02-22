@@ -1,18 +1,19 @@
+import ExpenseLineChart from "../components/ExpenseLineChart";
+import ExpenseOverview from "../components/ExpenseOverview";
+import ExpensePieChart from "../components/ExpensePieChart";
+
 const Dashboard = () => {
   return (
-    <div className="min-h-full">
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+    <div className="px-4 py-6 sm:px-0">
+      <div className="dashboard-overview flex justify-between">
+        <ExpenseOverview />
+      </div>
+      <div className="dashboard-charts flex justify-between w-full my-5">
+        <div className="w-full">
+          <ExpenseLineChart />
         </div>
-      </header>
-      <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-          </div>
-        </div>
-      </main>
+        <ExpensePieChart />
+      </div>
     </div>
   );
 };

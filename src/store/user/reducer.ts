@@ -1,15 +1,15 @@
-import { ReduxAction } from '../../interface/Common';
-import { UserState } from '../../interface/UserState';
-import { UPDATE_PROFILE } from './constant';
+import { ReduxAction } from "../../interface/Common";
+import { UserState } from "../../interface/UserState";
+import { UPDATE_PROFILE } from "./constant";
 
 const initialState: UserState = {
   profile: {
-    displayName: '',
-    email: '',
-    phoneNumber: '',
-    photoURL: '',
-    providerId: '',
-    uid: '',
+    displayName: "",
+    email: "",
+    phoneNumber: "",
+    photoURL: "",
+    providerId: "",
+    uid: "",
   },
 };
 

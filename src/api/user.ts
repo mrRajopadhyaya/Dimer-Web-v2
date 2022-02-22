@@ -1,6 +1,6 @@
-import axios from '../config/axios';
+import axios from "../config/axios";
 
-const BASE_PATH = '/user';
+const BASE_PATH = "/user";
 
 export const APIGetProfile = async () => {
   try {

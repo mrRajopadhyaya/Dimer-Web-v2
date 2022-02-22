@@ -10,9 +10,9 @@ export interface TotalData {
   totalIncome: number;
 }
 
-export interface ExpenseCategory{
-  label: string[],
-  value: number[]
+export interface ExpenseCategory {
+  label: string[];
+  value: number[];
 }
 
 export interface ExpenseDate {

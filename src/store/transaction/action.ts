@@ -1,6 +1,9 @@
 import { Transaction } from "../../interface/TransactionState";
-import { CREATE_TRANSACTION, LOAD_TRANSACTION,DELETE_TRANSACTION } from "./constant";
-
+import {
+  CREATE_TRANSACTION,
+  LOAD_TRANSACTION,
+  DELETE_TRANSACTION,
+} from "./constant";
 
 export const addTransaction = (transaction: Transaction) => {
   return {
@@ -12,13 +15,13 @@ export const addTransaction = (transaction: Transaction) => {
 export const loadTransaction = (transactions: Transaction[]) => {
   return {
     type: LOAD_TRANSACTION,
-    payload: transactions
-  }
-}
+    payload: transactions,
+  };
+};
 
 export const deleteTransaction = (transactionId: string) => {
   return {
     type: DELETE_TRANSACTION,
-    payload: transactionId
-  }
-}
+    payload: transactionId,
+  };
+};

@@ -1,7 +1,7 @@
-import axios from '../config/axios';
-import { UserProfile } from '../interface/UserState';
+import axios from "../config/axios";
+import { UserProfile } from "../interface/UserState";
 
-const BASE_PATH = '/auth';
+const BASE_PATH = "/auth";
 
 export const APILogin = async (userDetails: UserProfile) => {
   try {
